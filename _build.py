@@ -4,7 +4,7 @@
 # Файлы с «_» в начале GitHub Pages не публикует.
 import os
 
-EMAIL = 'rinkrogue@gmail.com'   # почта для вопросов и отзывов
+EMAIL = 'rinkrogue.app@gmail.com'   # почта для вопросов и отзывов
 BETA = ''                       # публичная ссылка TestFlight; пусто — вместо кнопки «бета по приглашению»
 BASE = '/rinkrogue-site/'       # сайт живёт в подпапке warlockjohn.github.io/rinkrogue-site
 SITE = 'https://warlockjohn.github.io' + BASE
