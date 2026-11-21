@@ -10,6 +10,8 @@ BASE = '/rinkrogue-site/'       # сайт живёт в подпапке warloc
 SITE = 'https://warlockjohn.github.io' + BASE
 OWNER = 'Yevgeniy Avdonin'
 LANGS = ['ru', 'en']
+# Скриншоты для главной: файлы в assets/, по порядку. Добавляются сюда — и python3 _build.py
+SHOTS = ['shot_splash.jpg']
 LANG_LABEL = {'ru': 'Рус', 'en': 'Eng'}
 
 T = {
@@ -23,6 +25,7 @@ T = {
         'badge_small': 'Бета в TestFlight · для iPhone',
         'soon': 'Бета в TestFlight — по приглашению',
         'note': 'Для iPhone. Русский и английский язык.',
+        'shots_h': 'Как это выглядит',
         'feat_h': 'Что внутри',
         'feat': [
             ('Шесть команд — шесть характеров', 'Дворовые, Моржи-пенсионеры, Пенные, Шпана с Нижнего, Вожатые «Зорьки» и Бабки у подъезда. У каждой своя колода и своя хитрость.'),
@@ -58,6 +61,7 @@ T = {
         'badge_small': 'TestFlight beta · iPhone',
         'soon': 'TestFlight beta — invitation only',
         'note': 'For iPhone. English and Russian.',
+        'shots_h': 'Screenshots',
         'feat_h': 'What\'s inside',
         'feat': [
             ('Six teams, six personalities', 'Backyard Crew, Old Walruses, The Foamers, Street Rats, Scout Leaders and Porch Grannies. Each has its own deck and its own trick.'),
@@ -134,6 +138,7 @@ def home(lang):
     t = T[lang]
     cta = (f'<a class="btn" href="{BETA}">{t["badge"]}<small>{t["badge_small"]}</small></a>' if BETA
            else f'<p class="soon">{t["soon"]}</p>')
+    shots = ''.join(f'<img src="{BASE}assets/{f}" alt="" loading="lazy">' for f in SHOTS)
     feats = ''.join(f'<div class="card"><h3>{h}</h3><p>{p}</p></div>' for h, p in t['feat'])
     body = f'''<section class="hero">
   <img class="logo" src="{BASE}assets/icon.png" alt="">
@@ -141,6 +146,10 @@ def home(lang):
   <p class="lead">{t['lead']}</p>
   {cta}
   <p class="note">{t['note']}</p>
+</section>
+<section>
+  <h2>{t['shots_h']}</h2>
+  <div class="shots">{shots}</div>
 </section>
 <section>
   <h2>{t['feat_h']}</h2>
