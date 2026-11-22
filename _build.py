@@ -13,7 +13,7 @@ LANGS = ['ru', 'en']
 # Скриншоты для главной: файлы в assets/, по порядку. Добавляются сюда — и python3 _build.py
 SHOTS = {
     'ru': ['shot_splash.jpg', 'shot_map_ru.jpg', 'shot_match_ru.jpg', 'shot_goal_ru.jpg'],
-    'en': ['shot_splash.jpg', 'shot_map_en.jpg', 'shot_match.jpg', 'shot_goal.jpg'],
+    'en': ['shot_splash_en.jpg', 'shot_map_en.jpg', 'shot_match.jpg', 'shot_goal.jpg'],
 }
 LANG_LABEL = {'ru': 'Рус', 'en': 'Eng'}
 
