@@ -11,7 +11,10 @@ SITE = 'https://warlockjohn.github.io' + BASE
 OWNER = 'Yevgeniy Avdonin'
 LANGS = ['ru', 'en']
 # Скриншоты для главной: файлы в assets/, по порядку. Добавляются сюда — и python3 _build.py
-SHOTS = ['shot_splash.jpg']
+SHOTS = {
+    'ru': ['shot_splash.jpg', 'shot_map_ru.jpg', 'shot_match.jpg', 'shot_goal.jpg'],
+    'en': ['shot_splash.jpg', 'shot_map_en.jpg', 'shot_match.jpg', 'shot_goal.jpg'],
+}
 LANG_LABEL = {'ru': 'Рус', 'en': 'Eng'}
 
 T = {
@@ -138,7 +141,7 @@ def home(lang):
     t = T[lang]
     cta = (f'<a class="btn" href="{BETA}">{t["badge"]}<small>{t["badge_small"]}</small></a>' if BETA
            else f'<p class="soon">{t["soon"]}</p>')
-    shots = ''.join(f'<img src="{BASE}assets/{f}" alt="" loading="lazy">' for f in SHOTS)
+    shots = ''.join(f'<img src="{BASE}assets/{f}" alt="" loading="lazy">' for f in SHOTS[lang])
     feats = ''.join(f'<div class="card"><h3>{h}</h3><p>{p}</p></div>' for h, p in t['feat'])
     body = f'''<section class="hero">
   <img class="logo" src="{BASE}assets/icon.png" alt="">
