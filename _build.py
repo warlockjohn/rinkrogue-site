@@ -2,6 +2,7 @@
 # Сайт игры «ШАЙБУ!»: главная и политика конфиденциальности (ru / en).
 # Тексты правятся здесь, потом: python3 _build.py — HTML пересоберётся рядом.
 # Файлы с «_» в начале GitHub Pages не публикует.
+import hashlib
 import os
 
 EMAIL = 'rinkrogue.app@gmail.com'   # почта для вопросов и отзывов
@@ -141,7 +142,9 @@ def home(lang):
     t = T[lang]
     cta = (f'<a class="btn" href="{BETA}">{t["badge"]}<small>{t["badge_small"]}</small></a>' if BETA
            else f'<p class="soon">{t["soon"]}</p>')
-    shots = ''.join(f'<img src="{BASE}assets/{f}" alt="" loading="lazy">' for f in SHOTS[lang])
+    # ?v=<хэш файла> — чтобы браузер не показывал старую картинку после замены
+    ver = lambda f: hashlib.md5(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'assets', f), 'rb').read()).hexdigest()[:8]
+    shots = ''.join(f'<img src="{BASE}assets/{f}?v={ver(f)}" alt="" loading="lazy">' for f in SHOTS[lang])
     feats = ''.join(f'<div class="card"><h3>{h}</h3><p>{p}</p></div>' for h, p in t['feat'])
     body = f'''<section class="hero">
   <img class="logo" src="{BASE}assets/icon.png" alt="">
