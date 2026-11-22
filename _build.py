@@ -55,8 +55,8 @@ T = {
         ],
     },
     'en': {
-        'name': 'ШАЙБУ!',
-        'title': 'ШАЙБУ! — a hockey card roguelike',
+        'name': 'Deck the Rink',
+        'title': 'Deck the Rink — a hockey card roguelike',
         'desc': 'A hockey card roguelike for iPhone: backyard teams, decks with character, fights, shootouts and trophies. 1960s comic style.',
         'h1': 'Pick a team, build a deck — win the neighborhood cup',
         'lead': 'A card roguelike about backyard hockey. Pick a team — from retired ice-swimmers to the grannies from the porch bench — build your deck and fight through the tournament: group stage, playoffs, final and a boss. Pass, shoot, throw your weight around by the boards, and if time runs out — it\'s a shootout.',
