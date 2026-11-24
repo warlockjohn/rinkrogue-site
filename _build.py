@@ -9,8 +9,8 @@ EMAIL = 'rinkrogue.app@gmail.com'   # почта для вопросов и от
 BETA = 'https://testflight.apple.com/join/SzEd2gEs'  # публичная ссылка TestFlight
 # APK — последний релиз в GitHub (тег beta-N; файл всегда Deck_the_Rink.apk)
 APK = 'https://github.com/warlockjohn/rinkrogue-site/releases/latest/download/Deck_the_Rink.apk'
-# Статистика посещений: GoatCounter, без cookies (shaibu.goatcounter.com)
-GOAT = 'shaibu'
+# Статистика посещений: GoatCounter, без cookies (hockeyrogue.goatcounter.com)
+GOAT = 'hockeyrogue'
 BASE = '/rinkrogue-site/'       # сайт живёт в подпапке warlockjohn.github.io/rinkrogue-site
 SITE = 'https://warlockjohn.github.io' + BASE
 OWNER = 'Yevgeniy Avdonin'
