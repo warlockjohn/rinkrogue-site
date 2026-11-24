@@ -7,6 +7,10 @@ import os
 
 EMAIL = 'rinkrogue.app@gmail.com'   # почта для вопросов и отзывов
 BETA = 'https://testflight.apple.com/join/SzEd2gEs'  # публичная ссылка TestFlight
+# APK — последний релиз в GitHub (тег beta-N; файл всегда Deck_the_Rink.apk)
+APK = 'https://github.com/warlockjohn/rinkrogue-site/releases/latest/download/Deck_the_Rink.apk'
+# Статистика посещений: GoatCounter, без cookies (shaibu.goatcounter.com)
+GOAT = 'shaibu'
 BASE = '/rinkrogue-site/'       # сайт живёт в подпапке warlockjohn.github.io/rinkrogue-site
 SITE = 'https://warlockjohn.github.io' + BASE
 OWNER = 'Yevgeniy Avdonin'
@@ -25,10 +29,13 @@ T = {
         'desc': 'Хоккейный карточный рогалик для iPhone: дворовые команды, колоды-характеры, драки, буллиты и кубки. Комикс в духе 60-х.',
         'h1': 'Выбери команду, собери колоду — выиграй районный кубок',
         'lead': 'Карточный рогалик про дворовый хоккей. Выбери команду — от моржей-пенсионеров до бабок у подъезда — собери колоду и пройди турнир: группа, плей-офф, финал и босс. Пасуй, бросай, толкайся у бортика, а не хватит времени — бей буллиты.',
-        'badge': 'Стать тестером',
-        'badge_small': 'Бета в TestFlight · для iPhone',
+        'badge': 'iPhone',
+        'badge_small': 'бета в TestFlight',
+        'apk': 'Android',
+        'apk_small': 'APK-файл',
+        'apk_hint': 'Android: скачай файл и открой. Телефон спросит разрешение на установку из этого источника — разреши, в Google Play игры пока нет.',
         'soon': 'Бета в TestFlight — по приглашению',
-        'note': 'Для iPhone. Русский и английский язык.',
+        'note': 'Бесплатно, без рекламы. Русский и английский язык.',
         'shots_h': 'Скриншоты',
         'feat_h': 'Что внутри',
         'feat': [
@@ -47,6 +54,7 @@ T = {
             ('Что хранится на телефоне', '<p>Сохранение карьеры, открытые команды и катки, кубки на полке, настройки звука и языка, просмотренные подсказки. Всё это лежит внутри приложения на вашем iPhone, у разработчика доступа к этому нет.</p>'),
             ('Статистика матчей в тестовых версиях', '<p>Тестовые версии игры могут отправлять разработчику обезличенную статистику сыгранных матчей, чтобы настраивать баланс: время матча, выбранная команда и соперник, этап турнира, счёт, число бросков, удалений и драк, какие карты были сыграны, а также платформу (iOS или Android), язык игры, её версию и случайный номер установки — его игра придумывает сама при первом запуске, чтобы отличать матчи одного игрока от другого. В ней нет имени, почты, номера телефона, рекламного идентификатора, геолокации и других сведений, по которым можно узнать игрока. Данные хранятся в таблице разработчика (Google) и используются только для настройки игры.</p>'),
             ('Интернет и сторонние сервисы', '<p>Игра работает без аккаунта. Через интернет она скачивает обновления игры (сервис Expo) и, в тестовых версиях, отправляет статистику, описанную выше. Рекламы, покупок внутри игры и сторонних SDK для аналитики или трекинга нет.</p>'),
+            ('Этот сайт', '<p>Сайт считает посещения через GoatCounter — без cookies и без сбора личных данных: только сколько людей зашло, с какой страницы пришли и нажали ли кнопку скачивания. IP-адреса не сохраняются.</p>'),
             ('Разрешения', '<p>Игра не запрашивает доступ к камере, микрофону, фото, контактам и геолокации. Вибрация используется только для эффектов в матче.</p>'),
             ('Тестирование через TestFlight', '<p>Если вы тестируете бету, Apple может передавать разработчику отчёты о сбоях и ваши отзывы с тем, что вы сами в них укажете. Подробнее — в <a href="https://www.apple.com/legal/privacy/data/en/test-flight/">правилах TestFlight</a>.</p>'),
             ('Дети', '<p>Игра не предназначена для сбора данных о ком-либо, в том числе о детях, и не просит вводить личные сведения.</p>'),
@@ -61,10 +69,13 @@ T = {
         'desc': 'A hockey card roguelike for iPhone: backyard teams, decks with character, fights, shootouts and trophies. 1960s comic style.',
         'h1': 'Pick a team, build a deck — win the neighborhood cup',
         'lead': 'A card roguelike about backyard hockey. Pick a team — from retired ice-swimmers to the grannies from the porch bench — build your deck and fight through the tournament: group stage, playoffs, final and a boss. Pass, shoot, throw your weight around by the boards, and if time runs out — it\'s a shootout.',
-        'badge': 'Join the beta',
-        'badge_small': 'TestFlight beta · iPhone',
+        'badge': 'iPhone',
+        'badge_small': 'TestFlight beta',
+        'apk': 'Android',
+        'apk_small': 'APK file',
+        'apk_hint': 'Android: download the file and open it. Your phone will ask to allow installs from this source — allow it, the game is not on Google Play yet.',
         'soon': 'TestFlight beta — invitation only',
-        'note': 'For iPhone. English and Russian.',
+        'note': 'Free, no ads. English and Russian.',
         'shots_h': 'Screenshots',
         'feat_h': 'What\'s inside',
         'feat': [
@@ -83,6 +94,7 @@ T = {
             ('What is stored on your phone', '<p>Your career save, unlocked teams and rinks, trophies on the shelf, sound and language settings, and which tips you have seen. All of it lives inside the app on your iPhone; the developer has no access to it.</p>'),
             ('Match statistics in test versions', '<p>Test versions of the game may send the developer anonymous statistics about finished matches to help tune the balance: time of the match, your team and the opponent, tournament stage, score, number of shots, penalties and fights, which cards were played, as well as the platform (iOS or Android), game language, game version and a random install number — the game makes it up on first launch to tell one player\'s matches from another\'s. It contains no name, email, phone number, advertising identifier, location or anything else that could identify a player. The data is kept in the developer\'s spreadsheet (Google) and used only to tune the game.</p>'),
             ('Internet and third-party services', '<p>The game works without an account. It uses the internet to download game updates (Expo) and, in test versions, to send the statistics described above. There are no ads, no in-app purchases and no third-party analytics or tracking SDKs.</p>'),
+            ('This website', '<p>The site counts visits with GoatCounter — no cookies and no personal data: only how many people came, which page referred them and whether they clicked a download button. IP addresses are not stored.</p>'),
             ('Permissions', '<p>The game does not ask for access to your camera, microphone, photos, contacts or location. Vibration is used only for in-match effects.</p>'),
             ('TestFlight', '<p>If you test the beta, Apple may share crash reports and your feedback with the developer, including whatever you choose to put in it. See the <a href="https://www.apple.com/legal/privacy/data/en/test-flight/">TestFlight privacy terms</a>.</p>'),
             ('Children', '<p>The game is not designed to collect data about anyone, including children, and never asks for personal information.</p>'),
@@ -133,6 +145,7 @@ def page(lang, slug, title, desc, body):
   <a href="mailto:{EMAIL}">{EMAIL}</a>
 </footer>
 </div>
+<script data-goatcounter="https://{GOAT}.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
 '''
@@ -140,7 +153,9 @@ def page(lang, slug, title, desc, body):
 
 def home(lang):
     t = T[lang]
-    cta = (f'<a class="btn" href="{BETA}">{t["badge"]}<small>{t["badge_small"]}</small></a>' if BETA
+    cta = (f'<div class="btns"><a class="btn" href="{BETA}" data-goatcounter-click="get-ios" data-goatcounter-title="iPhone">{t["badge"]}<small>{t["badge_small"]}</small></a>'
+           f'<a class="btn" href="{APK}" data-goatcounter-click="get-android" data-goatcounter-title="Android">{t["apk"]}<small>{t["apk_small"]}</small></a></div>'
+           f'<p class="apkhint">{t["apk_hint"]}</p>' if BETA
            else f'<p class="soon">{t["soon"]}</p>')
     # ?v=<хэш файла> — чтобы браузер не показывал старую картинку после замены
     ver = lambda f: hashlib.md5(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'assets', f), 'rb').read()).hexdigest()[:8]
