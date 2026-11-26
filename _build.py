@@ -11,6 +11,8 @@ BETA = 'https://testflight.apple.com/join/SzEd2gEs'  # публичная ссы
 APK = 'https://github.com/warlockjohn/rinkrogue-site/releases/latest/download/Deck_the_Rink.apk'
 # Статистика посещений: GoatCounter, без cookies (hockeyrogue.goatcounter.com)
 GOAT = 'hockeyrogue'
+# Чат тестеров в Telegram
+TG = 'https://t.me/Deck_the_rink'
 BASE = '/rinkrogue-site/'       # сайт живёт в подпапке warlockjohn.github.io/rinkrogue-site
 SITE = 'https://warlockjohn.github.io' + BASE
 OWNER = 'Yevgeniy Avdonin'
@@ -33,6 +35,8 @@ T = {
         'badge_small': 'бета в TestFlight',
         'apk': 'Android',
         'apk_small': 'APK-файл',
+        'tg': 'Чат тестеров в Telegram',
+        'tg_small': 'баги, идеи, баланс',
         'apk_hint': 'Android: скачай файл и открой. Телефон спросит разрешение на установку из этого источника — разреши, в Google Play игры пока нет.',
         'soon': 'Бета в TestFlight — по приглашению',
         'note': 'Бесплатно, без рекламы. Русский и английский язык.',
@@ -73,6 +77,8 @@ T = {
         'badge_small': 'TestFlight beta',
         'apk': 'Android',
         'apk_small': 'APK file',
+        'tg': 'Testers chat on Telegram',
+        'tg_small': 'bugs, ideas, balance',
         'apk_hint': 'Android: download the file and open it. Your phone will ask to allow installs from this source — allow it, the game is not on Google Play yet.',
         'soon': 'TestFlight beta — invitation only',
         'note': 'Free, no ads. English and Russian.',
@@ -142,6 +148,7 @@ def page(lang, slug, title, desc, body):
   <span>© 2026 {t['name']} · {t['made']}</span>
   <a href="{prefix(lang)}">{t['home']}</a>
   <a href="{prefix(lang)}privacy.html">{t['privacy']}</a>
+  <a href="{TG}" data-goatcounter-click="tg-chat-footer">Telegram</a>
   <a href="mailto:{EMAIL}">{EMAIL}</a>
 </footer>
 </div>
@@ -155,7 +162,8 @@ def home(lang):
     t = T[lang]
     cta = (f'<div class="btns"><a class="btn" href="{BETA}" data-goatcounter-click="get-ios" data-goatcounter-title="iPhone">{t["badge"]}<small>{t["badge_small"]}</small></a>'
            f'<a class="btn" href="{APK}" data-goatcounter-click="get-android" data-goatcounter-title="Android">{t["apk"]}<small>{t["apk_small"]}</small></a></div>'
-           f'<p class="apkhint">{t["apk_hint"]}</p>' if BETA
+           f'<p class="apkhint">{t["apk_hint"]}</p>'
+           f'<a class="btn tg" href="{TG}" data-goatcounter-click="tg-chat" data-goatcounter-title="Telegram">{t["tg"]}<small>{t["tg_small"]}</small></a>' if BETA
            else f'<p class="soon">{t["soon"]}</p>')
     # ?v=<хэш файла> — чтобы браузер не показывал старую картинку после замены
     ver = lambda f: hashlib.md5(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'assets', f), 'rb').read()).hexdigest()[:8]
